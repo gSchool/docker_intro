@@ -48,4 +48,4 @@ This is why Docker is a great tool for collaboration and service management. It 
 
 The application you just ran is an example of what you'll be creating for this lesson. Even though it's pretty minimal, alot of configuration will go into making this work. 
 
-[Continue to the next section ...](sections/part2.md)
+[Continue to the next section ...](part2.md)

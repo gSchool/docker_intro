@@ -70,7 +70,7 @@ You should see a message that the stack is being updated. And that's it, your wo
 
 **Go to your browser where your service is running (by it's IP address), but on port 8080.** You should see the visualizer representing each machine in the cluster.
 
-![Imgur](https://imgur.com/fIyAfrx)
+![Imgur](https://imgur.com/fIyAfrx.png)
 
 The service we used in this example was created by Docker. The image already exists online in Docker's registry, so we're just using it here as intended. This illustrates the key feature of Docker: easily shared services that are easy to deploy.
 
