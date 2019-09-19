@@ -1,13 +1,15 @@
 # Part 5: Stacks
 
-We've already been working with stacks but not in a realistic way. So far we've deployed a stack that runs a singular service. In the working world, stacks will typically be deployed as groups of services that work together, similar to the way swarms work in concert.
+You've made it far and you're almost at the finish line!
 
-To recap:
+To recap what you've learned so far:
+
 - Virtual machines are used to run your services (microservices, your application).
 - Services can be anything: a backend, a client, a database, etc.
 - Stacks are a tool for **orchestrating** groups of services.
+- Stacks can contain many services, which are described in the `docker-compose.yml`
 - Swarms are a cluster of services, lead by a single manager.
-- Docker compose helps us manage services and swarms.
+- Docker compose helps us manage service stacks and configure swarms.
 - Docker machine helps us manage virtual machines.
 
 As the Docker documentation states: 'A single stack is capable of defining and coordinating the functionality of an entire application (though very complex applications may want to use multiple stacks).'
@@ -16,9 +18,9 @@ This is a very high level tool for orchestrating your services and scaling them.
 
 So let's get hands-on to see what this means in practice.
 
-Open your `docker-compose.yml`. We're going to add a new service to it. 
+Open your `docker-compose.yml`. We're going to add a new service to our stack. 
 
-1. Copy the new visualizer service section from the snippet below
+1. Copy the new Visualizer service section from the snippet below.
 2. Paste it into your file.
 
 Here's what your final result should look like:
@@ -27,8 +29,8 @@ Here's what your final result should look like:
 version: "3"
 services:
   web:
-    # replace username/repo:tag with your name and image details
-    image: username/repo:tag
+    # replace registry/repo:tag with your registry and repo details
+    image: registry/repo:tag
     deploy:
       replicas: 5
       resources:
@@ -61,15 +63,18 @@ networks:
 Carefully examine the changes.
 
 Using Docker Compose, this is all it takes to add a new service to our stack. Now re-run your docker deploy command: 
-`docker stack deploy -c docker-compose.yml apidemolab` You should see a message that the stack is being updated. That's it, your work is done. You've deployed a whole new service!
+
+`docker stack deploy -c docker-compose.yml apidemolab` 
+
+You should see a message that the stack is being updated. And that's it, your work is done. You've deployed a whole new service to the stack!
 
 **Go to your browser where your service is running (by it's IP address), but on port 8080.** You should see the visualizer representing each machine in the cluster.
 
 ![Imgur](https://imgur.com/fIyAfrx)
 
-Now the service we used in this example was created by Docker. The image already exists so we're just using it here as intended. This illustrates the key feature of Docker: easily shared services that are easy to deploy.
+The service we used in this example was created by Docker. The image already exists online in Docker's registry, so we're just using it here as intended. This illustrates the key feature of Docker: easily shared services that are easy to deploy.
 
-We still don't have our counter operating via Redis. So next we're going to add a Redis service to persist our visitor data in 3 steps.
+We still don't have our counter operating via Redis, however. So next we're going to add a Redis service to persist our visitor data in 3 steps. Follow along carefully.
 
 **Step 1**
 1. Copy the new Redis service section from below.
@@ -81,8 +86,8 @@ Your final result should look like this:
 version: "3"
 services:
   web:
-    # replace username/repo:tag with your name and image details
-    image: username/repo:tag
+    # replace registry/repo:tag with your registry and repo details
+    image: registry/repo:tag
     deploy:
       replicas: 5
       resources:
@@ -138,7 +143,7 @@ networks:
 Carefully examine the changes.
 
 **Step 2**
-Redis is our data service. It will need a `/data` directory to store information in. We can create that directory on our manager node:
+Redis is our data service. It will need a `/data` directory to store information within. We can create that directory on our manager node easily:
 
 `docker-machine ssh apidemovm1 "mkdir ./data"`
 
@@ -151,6 +156,12 @@ You can view the changes in your browser. **It may take a minute for all the ser
 
 Verify that things are running: `docker service ls`
 
-You should have browser tabs so that you can see both the Visualizer (port 8080) and your apidemolab service (port 4000). Your counter should now be working! Your Visualizer should also now display the new redis service.
+You should have browser tabs open so that you can see both the Visualizer (port 8080) and your apidemolab service (port 4000). Your counter should now be working! Your Visualizer should also now display the new redis service.
 
-[Continue to the next section ...](sections/final.md)
+
+### Additional Reading
+
+- [What is container orchestration?](https://blog.newrelic.com/engineering/container-orchestration-explained/)
+- [Are there other orchestration tools?](https://www.linux.com/news/8-open-source-container-orchestration-tools-know/)
+
+[Continue to the next section ...](final.md)

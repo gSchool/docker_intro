@@ -1,28 +1,16 @@
-# API Demo
+# Docker Intro
 
 A simple demonstration of how to dockerize an app, build and run it. This demo is based on the [Getting Started](https://docs.docker.com/get-started) tutorial at Docker.
 
-## Running a Docker App
+This lesson aims to teach you the basics of Docker and get you familiar with using the tool. There are 5 sections, each with their own exercises for mastery. By the end you should be able to:
 
-To pull and run ths project from Docker:
+- Create images
+- Create containers
+- Create services (with Virtual Machines)
+- Create and manage clusters (Docker Compose)
+- Create stacks (Docker Compose)
 
-```
-# Tell Docker to pull apidemo repository with tag 'latest' and run it 
-# locally on port 8000. 80 represents the port config for the app.
-docker run -p 8000:80 protosac/apidemo:latest
-```
-
-With this simple command as a developer you were able to avoid:
-
-- cloning a repository
-- install dependencies
-- configure a server
-
-This is why Docker is a great tool for collaboration and service management. It automates processes to make managing services and deploying them simple and fast.
-
-## Creating a Docker Image
-
-To create a docker image, we need an app so we'll make one. Clone this repository or any of the relevant repos below per your instructors guidance. This lesson focuses strictly on Docker, not a language or framework.
+Clone this repository (or any of the relevant repos below per your instructors guidance). This lesson focuses strictly on Docker, not a given language or framework.
 
 - [Java App]()
 - [Javascript App]()
@@ -32,7 +20,7 @@ Each repo contains: a single script, an ignore file, a dependencies file (if nee
 ## [Start the first section](sections/part1.md)
 
 
-# Trouble-shooting Help
+### Trouble-shooting
 
 Here's some common issues you may run into while learning Docker, along with some ways to troubleshoot.
 
