@@ -108,6 +108,30 @@ You can also view the IP addresses this way.
 
 Visit the IP address of either of your virtual machines on port 4000. For example, yours may look like this `192.168.99.108:4000`.
 
+
+### Trouble-shooting
+
+Here's some common issues you may run into while learning Docker, along with some ways to troubleshoot.
+
+**Tip 1: Docker connection issues**
+If the docker server seems to be down or you're getting errors that say docker isn't running, first try closing your terminal session out and starting a new one. Then run `docker info` or `docker version` to check if it's running.
+
+**Tip 2: Docker machine stopped or failed**
+If your docker machine (vm) says it's stopped or has failed, first try restarting it. Then verify it restarted.
+
+```
+docker-machine restart myvm
+docker-machine ls
+```
+
+**Tip 3: Error port in use**
+
+You're trying to connect to a port that's already in use. First, if you don't want to stop a stack or container, simply use a different port. This is the simplest thing to do.
+
+If you have stacks running on that port, they will continue to restart containers according to what you instructed in the `docker-compose.yml`. So stopping a container will not work. Therefore, make sure your stack isn't running with `docker stack ls`.
+
+If you see a stack that needs to be removed: `docker stack rm stackname`. Removing the stack should also kill the containers, freeing up the port.
+
 ### Additional Reading
 
 - [Why Virtual Machines?](https://www.virtualbox.org/manual/ch01.html#virt-why-useful)

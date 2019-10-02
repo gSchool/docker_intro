@@ -59,4 +59,12 @@ docker container stop paste_container_id_here
 
 You've built a Docker app. JOY! But you're using Docker for a reason: to share and collaborate. Next we'll talk about how to share your apps.
 
+
+### Trouble-shooting
+
+Here's some common issues you may run into while learning Docker, along with some ways to troubleshoot.
+
+**Tip 1: Docker connection issues**
+If the docker server seems to be down or you're getting errors that say docker isn't running, first try closing your terminal session out and starting a new one. Then run `docker info` or `docker version` to check if it's running.
+
 [Continue to the next section ...](part3.md)
