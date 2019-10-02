@@ -12,7 +12,7 @@ This lesson aims to teach you the basics of Docker and get you familiar with usi
 
 Clone this repository (or any of the relevant repos below per your instructors guidance). This lesson focuses strictly on Docker, not a given language or framework.
 
-- [Java App]()
+- [Java App](https://github.com/LinguaTechEdu/docker_intro_java)
 - [Javascript App]()
 
 Each repo contains: a single script, an ignore file, a dependencies file (if needed) and a README with these same instructions. 
